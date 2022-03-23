@@ -1,7 +1,7 @@
 package pl.coderslab.cfg;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import pl.coderslab.cfg.AppConfig;
+
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override

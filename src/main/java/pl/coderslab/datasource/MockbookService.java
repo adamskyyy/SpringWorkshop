@@ -1,13 +1,15 @@
 package pl.coderslab.datasource;
 
 
+import pl.coderslab.controllers.BookInterface;
 import pl.coderslab.model.Book;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class MockbookService {
-    private static Long nextId = 4L;
+public class MockbookService implements BookInterface {
     private List<Book> books;
+    private static Long nextId = 4L;
 
     public MockbookService() {
         books = new ArrayList<>();
@@ -17,6 +19,28 @@ public class MockbookService {
         books.add(new Book(3L, "9780130819338", "Java	2.	Podstawy", "Cay	Horstmann,	Gary	Cornell", "Helion",
                 "programming"));
     }
+
+    @Override
+    public void addBook(Book book) {
+    book.setId(nextId);
+    books.add(book);
+    }
+
+    @Override
+    public void deleteBook(Long id) {
+        if (get(id).isPresent()) {
+            books.remove(this.get(id).get());
+        }
+    }
+
+    @Override
+    public Optional<Book> get(Long id) {
+        return books.stream().filter(item -> item.getId().equals(id)).findFirst();
+    }
+
+
+
+
 
     public static Long getNextId() {
         return nextId;
@@ -33,4 +57,5 @@ public class MockbookService {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
+
 }
