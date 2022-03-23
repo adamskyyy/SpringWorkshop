@@ -14,4 +14,6 @@ public interface BookInterface {
     void deleteBook(Long id);
 
     Optional<Book> get(Long id);
+
+    void updateBook(Book book);
 }

@@ -38,8 +38,13 @@ public class MockbookService implements BookInterface {
         return books.stream().filter(item -> item.getId().equals(id)).findFirst();
     }
 
-
-
+    @Override
+    public void updateBook(Book book) {
+        if (this.get(book.getId()).isPresent()) {
+            int indexOf = books.indexOf(this.get(book.getId()).get());
+            books.set(indexOf, book);
+        }
+    }
 
 
     public static Long getNextId() {

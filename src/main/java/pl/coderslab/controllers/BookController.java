@@ -48,8 +48,10 @@ public class BookController {
         mockbookService.deleteBook(id);
     }
 
-    
-
-
+    @PutMapping("")
+    @ResponseBody
+    public void updateBook(@RequestBody Book book) {
+        mockbookService.updateBook(book);
+    }
 }
 
